@@ -12,8 +12,7 @@ public class Annuaire {
     private Map<String, Integer> carnet;
     Scanner scanner;
 
-    // Méthode volontaire un peu compliquée pour s'entrainer...
-
+    // Méthode volontairement un peu compliquée pour s'entrainer...
     public void ajouterPersonne() {
         
         System.out.print(" - Quel est le nom de la personne : ");
