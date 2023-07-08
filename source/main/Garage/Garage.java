@@ -17,23 +17,23 @@ public class Garage {
         System.out.println("=======================\n\n");
 
         if (args.length == 1) {
-            if (args[0] == "linux") {
+            if (args[0].equals("linux")) {
                 os = 0;
             }
             else
             {
-                os = 0;
+                os = 1;
             }
         }
 
         if (args.length == 2) {
             nomGarage = args[1];
-            if (args[0] == "linux") {
+            if (args[0].equals("linux")) {
                 os = 0;
             }
             else
             {
-                os = 0;
+                os = 1;
             }
         }
 
@@ -74,8 +74,13 @@ public class Garage {
                     }
                     break;
                 
-                case 1 : 
-                    System.out.println(" -> Pas encore de version pour Windows...\n\n");
+                case 1 : // Pour Windows mais pas encore fonctionnel...
+                    //System.out.println(" -> Pas encore de version pour Windows...\n\n");
+                    try {
+                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                    } catch (IOException | InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     break;
             }
         }
