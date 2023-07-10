@@ -8,6 +8,7 @@ public class Garage {
     
     private static String nomGarage;
     private static int os;
+    //IDataManager dtmanager;
 
     public static void main(String args[])
     {
@@ -37,15 +38,13 @@ public class Garage {
             }
         }
 
-        Pause();
-
         System.out.println("Nom du garage : " + nomGarage + "\n\n");
+        Test t1 = new Test();
+        t1.TestPrincipal();
 
-        // Test t1 = new Test();
-        // t1.TestPrincipal();
+        // Annuaire a1 = new Annuaire();
+        // a1.menuAnnuaire();
 
-        Annuaire a1 = new Annuaire();
-        a1.menuAnnuaire();
 
         System.out.println("\n");
     }
@@ -96,6 +95,7 @@ public class Garage {
 
     public Garage()
     {
+        //dtmanager = new Serialiser("./sauvegarde/donnees.txt", "./sauvegarde/annuaire.txt");
         os = 0;
     }
 }

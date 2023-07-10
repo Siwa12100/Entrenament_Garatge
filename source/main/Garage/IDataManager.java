@@ -6,7 +6,8 @@ import java.util.Map;
 public interface IDataManager {
     
     public void enregistrerVoitures(List<Voiture> l);
-    public List<Voiture> chargementVehicules();
+    public void closeStreams();
+    public List<Voiture> chargementVoitures();
 
     public void enregistrementAnnuaire(Map<String, Integer> m);
     public Map<String, Integer> chargementAnnuaire();

@@ -1,5 +1,7 @@
 package Garage;
 import Garage.Vehicules.*;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Test {
     
@@ -11,10 +13,74 @@ public class Test {
 
         Engin v1 = new Voiture(40);
         Engin v2 = new Voiture(10, 40000, 1, 5000, Marques.Peugeot, "Verd", "VoitureKaii");
-        v2.faireLePlein();
+        //v2.faireLePlein();
         //TestConsommationEssence(v1);
         //TestCompteurEtReparation(v2);
+
+        IDataManager dt = new Serialiser("./Garage/sauvegarde/voitures.txt","./Garage/sauvegarde/annuaire.txt");
+
+        // TestSerialisationVoitures(dt);
+        // dt.closeStreams();
+        // TestChargementVoitures(dt);
+        TestChargementEnregistrementAnnuaire(dt);
     } 
+
+    public void TestChargementEnregistrementAnnuaire(IDataManager dt) {
+        Annuaire a = new Annuaire();
+        ArrayList<Integer> lentiers = new ArrayList<Integer>();
+        ArrayList<String> lstrings = new ArrayList<String>();
+
+        for (int i = 0; i < 5; i++) {
+            lentiers.add(i *4);
+        }
+
+        for (int i = 0; i < 5; i++) {
+            lstrings.add("Utilisateur numero " + String.valueOf((i+1)) + " ");
+        }
+
+        for (int i = 0; i < 5; i++) {
+            a.ajoutRapide(lstrings.get(i), lentiers.get(i));
+        }
+
+        System.out.println("\n\n Enregistrement de l'annuaire : ");
+        System.out.println(" --------------------------------\n\n");
+        dt.enregistrementAnnuaire(a.getCarnet());
+        dt.closeStreams();
+
+        System.out.println("\n\n Chargement Affichage de l'annuaire : ");
+        System.out.println(    " ------------------------------------\n\n");
+        a.setCarnet(dt.chargementAnnuaire());
+        System.out.println("\n");
+        a.affichageAnnuaire();
+        System.out.println("\n");
+
+    }
+
+    public void TestChargementVoitures(IDataManager dt) {
+        List<Voiture> l = dt.chargementVoitures();
+
+        System.out.println("\n\n Affichage de toutes les voitures chargées : ");
+        System.out.println(" -------------------------------------------\n\n");
+
+        int i = 1;
+        for (Voiture v : l) {
+            System.out.print("- (" + i + ") : \t");
+            v.affichage();
+            System.out.println();
+            i++;
+        }
+
+    }
+    public void TestSerialisationVoitures(IDataManager dt) {
+
+        List<Voiture> liste = new ArrayList<Voiture>();
+        for (int i = 0; i < 10; i++) {
+            Voiture v = new Voiture();
+            liste.add(v);
+        }
+
+        dt.enregistrerVoitures(liste);
+    }
 
     public void TestFonctionnalitesVoiture()
     {
@@ -107,7 +173,7 @@ public class Test {
         System.out.println(" - Consommation : " + e1.getConsommation());
         System.out.println(" - Niveau essence : " + e1.getNiveauEssence());
         System.out.println(" - Prochaine reparation : " + e1.getProchaineReparation());
-        System.out.println(" - Compteur kilomètres : " + e1.getCompteurKilomètres());
+        System.out.println(" - Compteur kilometres : " + e1.getCompteurKilometres());
         System.out.println(" - Couleur engin : " + e1.getCouleur());
         System.out.println(" - Marque engin : " + e1.getMarque());
         System.out.println(" - Nom engin : " + e1.getNom());
@@ -132,7 +198,7 @@ public class Test {
 
         System.out.println(" ---> MAJ du compteur de 500");
         e1.augmenterCompteur(500);
-        System.out.println( " - Nouveau compteur : " + e1.getCompteurKilomètres() + "\n");
+        System.out.println( " - Nouveau compteur : " + e1.getCompteurKilometres() + "\n");
 
         System.out.println(" ---> MAJ de la prochaine reparation + 400");
         e1.setProchaineReparation(400);

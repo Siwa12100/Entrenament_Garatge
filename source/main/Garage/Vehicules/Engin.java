@@ -7,10 +7,10 @@ public abstract class Engin {
     protected int vitesse;
 
     // Taille du réservoir en essence 
-    protected final int capaciteReservoir;
+    protected int capaciteReservoir;
 
     // Donne le nombre d'essence consommé pour 1 kilomètre ( 1ue de distance)
-    protected final int consommation;
+    protected int consommation;
 
     // Donne le niveau actuel d'essence stocké dans le réservoir 
     protected int niveauEssence;
@@ -25,7 +25,7 @@ public abstract class Engin {
     protected String couleur;
 
     // Marque de l'engin
-    protected final Marques marque;
+    protected Marques marque;
 
     // Nom de la voiture 
     protected String nom;
@@ -36,7 +36,7 @@ public abstract class Engin {
     // Indique si l'engin est en capacité de fonctionner 
     protected boolean estEnPanne;
 
-    
+
     public int getVitesse(){
         return this.vitesse;
     }
@@ -62,6 +62,10 @@ public abstract class Engin {
         return this.prochaineReparation;
     }
 
+    public void setReparation(int i)  {
+        this.prochaineReparation = i;
+    }
+
     public int getNiveauEssence(){
         return this.niveauEssence;
     }
@@ -80,6 +84,30 @@ public abstract class Engin {
 
         public void renommer(String nvNom){
         this.nom = nvNom;
+    }
+
+    public void setPanne(Boolean b) {
+        this.estEnPanne = b;
+    }
+
+    public void setMarche(Boolean b) {
+        this.estEnMarche = b;
+    }
+
+    public void setCompteur(int i) {
+        this.compteurKilomètres = i;
+    }
+
+    public void setTailleReservoir(int i) {
+        this.capaciteReservoir = i;
+    }
+
+    public void setNiveauEssence(int i) {
+        this.niveauEssence = i;
+    }
+
+    public void setConsommation(int i) {
+        this.consommation = i;
     }
 
     public void consommer(int km)
@@ -128,12 +156,6 @@ public abstract class Engin {
         this.couleur = NouvellesCouleur;
     }
 
-    // L'attribut marque est lui aussi final 
-    // public void setMarque(Marques nv_m)
-    // {
-    //     this.marque = nv_m;
-    // }
-
     public void augmenterCompteur(int km)
     {
         this.compteurKilomètres = this.compteurKilomètres + km;
@@ -150,6 +172,10 @@ public abstract class Engin {
         {
             this.seCasser();
         }
+    }
+
+    public void setMarque(Marques m) {
+        this.marque =m;
     }
     
 
@@ -288,6 +314,8 @@ public abstract class Engin {
         {
             System.out.println("non");
         }
+
+        System.out.println();
     }
 
     public Engin()

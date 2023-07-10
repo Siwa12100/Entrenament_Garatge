@@ -1,0 +1,10 @@
+Utilisateur numero 3 
+8
+Utilisateur numero 2 
+4
+Utilisateur numero 1 
+0
+Utilisateur numero 5 
+16
+Utilisateur numero 4 
+12

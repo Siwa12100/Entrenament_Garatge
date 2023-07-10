@@ -12,13 +12,25 @@ public class Voiture extends Engin{
         }
     }
 
-    private final int nbRoues;
-    private final int tailleCoffre;
+    private  int nbRoues;
+    private int tailleCoffre;
     private String son;
-    public final Engins typeEngin;
+    public Engins typeEngin;
 
     public int getNbRoues(){
         return this.nbRoues;
+    }
+
+    public void setNbRoues(int i) {
+        this.nbRoues = i;
+    }
+
+    public void setTailleCoffre(int i) {
+        this.tailleCoffre = i;
+    }
+
+    public void setTypeEngin(Engins e) {
+        this.typeEngin = e;
     }
 
     public int getTailleCoffre(){
@@ -58,7 +70,7 @@ public class Voiture extends Engin{
 
     public void affichage()
     {
-        System.out.println("\n --- Voiture : " + this.nom + " --- ");
+        System.out.println(" --- Voiture : " + this.nom + " --- ");
         System.out.println("\t\t - Taille du coffre : " + this.getTailleCoffre());
         System.out.println("\t\t - Klaxon : " + this.getSon());
         super.affichage();

@@ -20,9 +20,13 @@ public class Annuaire {
         
         System.out.print("\n - Quel est son numéro : ");
         int num = scanner.nextInt();
-        String captureRetourLigne = scanner.nextLine();
+        scanner.nextLine();
         System.out.println();
 
+        ajoutRapide(nom, num);
+    }
+
+    public void ajoutRapide(String nom, int num) {
         List<Integer> CompliquePourRien = new ArrayList<Integer>();
 
         for(Map.Entry<String, Integer> verif : carnet.entrySet())
@@ -56,7 +60,7 @@ public class Annuaire {
         
         System.out.print("\n - Quel est son numéro : ");
         int num = scanner.nextInt();
-        String captureRetourLigne = scanner.nextLine();
+        scanner.nextLine();
         System.out.println();
 
         boolean verif = false;
@@ -120,20 +124,17 @@ public class Annuaire {
             System.out.println(" Affichage des personnes : ");
             System.out.println(" -------------------------");
 
-            for (Map.Entry<String, Integer> paire : carnet.entrySet()) {
-                System.out.print("|\t - " + paire.getKey() + " : ");
-                System.out.println(paire.getValue());
-            }
+            affichageAnnuaire();
 
             System.out.println("\n Que souhaitez-vous faire ? ");
             System.out.println(  " -------------------------\n");
             System.out.println(" 1.) Ajouter une nouvelle personne.");
             System.out.println(" 2.) Modifier une personne existante.");
             System.out.println(" 3.) Supprimer une personne existante.");
-            System.out.println(" 0.) Retourner au menu principal\n");
+            System.out.println(" 0.) Retourner au menu principal.\n");
             System.out.print(" -> Votre choix : ");
             choix = scanner.nextInt();
-            String captureRetourLigne = scanner.nextLine();
+            scanner.nextLine();
             System.out.println("\n\n");
 
             if (choix == 0) {
@@ -166,6 +167,21 @@ public class Annuaire {
                     break;
             }
         }
+    }
+
+    public void affichageAnnuaire() {
+        for (Map.Entry<String, Integer> paire : this.carnet.entrySet()) {
+                System.out.print("|\t - " + paire.getKey() + " : ");
+                System.out.println(paire.getValue());
+            }
+    }
+
+    public Map<String, Integer> getCarnet() {
+        return this.carnet;
+    }
+
+    public void setCarnet(Map<String, Integer> m) {
+        this.carnet = m;
     }
 
     public Annuaire() {
