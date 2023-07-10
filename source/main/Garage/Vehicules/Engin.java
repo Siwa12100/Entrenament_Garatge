@@ -36,7 +36,7 @@ public abstract class Engin {
     // Indique si l'engin est en capacité de fonctionner 
     protected boolean estEnPanne;
 
-
+    
     public int getVitesse(){
         return this.vitesse;
     }
@@ -54,7 +54,7 @@ public abstract class Engin {
         return this.capaciteReservoir;
     }
 
-    public int getCompteurKilomètres(){
+    public int getCompteurKilometres(){
         return this.compteurKilomètres;
     } 
 

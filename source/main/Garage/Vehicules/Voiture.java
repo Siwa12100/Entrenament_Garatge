@@ -25,6 +25,10 @@ public class Voiture extends Engin{
         return this.tailleCoffre;
     }
 
+    public Engins getTypeEngin() {
+        return this.typeEngin;
+    }
+
     public String getSon()
     {
         return this.son;
